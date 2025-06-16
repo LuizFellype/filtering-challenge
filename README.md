@@ -12,6 +12,29 @@ Este projeto é parte de uma etapa técnica do processo seletivo para a vaga de 
 
 Seu foco deve ser na implementação da lógica de recomendação e na integração desta funcionalidade com a interface do usuário existente. A aplicação já possui um layout básico utilizando Tailwind CSS.
 
+## Solução
+
+Filtrar podutos pelas preferencias selecionadas.
+Melhorar responsividade para mobile.
+
+### Sugestão
+
+Caso outra pagina existisse outra pagina, poderiamos usar Context para salvar as recomendações para nao perdermos o resultado ja feito. 
+Poderia considerar as features selecionadas caso não houvesse produtos pelas preferencias.
+
+## Como rodar
+
+Instalar todos as dependencias e rodar o projeto:
+ 
+    yarn install 
+    cd frontend && yarn install && cd ..
+    cd backend && yarn install && cd ..
+
+    yarn run dev
+
+
+
+
 ## Tecnologias Utilizadas
 
 Este projeto utiliza as seguintes tecnologias principais:
