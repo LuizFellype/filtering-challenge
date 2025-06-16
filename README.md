@@ -16,12 +16,16 @@ Seu foco deve ser na implementação da lógica de recomendação e na integraç
 
 - Filtrar podutos pelas preferencias selecionadas.
 Melhorar responsividade para mobile.
-- Separar responsabilidade do form e da logica de filtrar reduzindo estado duplicado e complexidade de components.
+- Separar responsabilidade do form e da logica de filtrar reduzindo estado duplicado e complexidade de components. Memoizando funções e componentes para evitar renderização desnecessaria.
+- Inicia com multiplas tipo de recomendações como default para melhorar UX, necessitando de menos ações para obeter resultados.
+
 
 ### Sugestão
 
 - Caso outra pagina existisse outra pagina, poderiamos usar Context para salvar as recomendações para nao perdermos o resultado ja feito. 
 - Poderia considerar as features selecionadas caso não houvesse produtos pelas preferencias.
+- Adicionar um loading/placeholder enquanto os dados da api estao sendo carregadas para evitar um pulo do container causado pela diferença de height ao ser populado e indicar ao usuario que os dados estao sendo carregadas. OU ate mesmo atualizar a versao do react para 19 e usar a feature de Server Components :)
+
 
 ## Como Executar
 
