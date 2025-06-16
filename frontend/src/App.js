@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Form from './components/Form/Form';
 import RecommendationList from './components/RecommendationList/RecommendationList';
+import useFilteringManager from './hooks/useFilterManager';
 
 function App() {
-  const [recommendations, setRecommendations] = useState([])
+  const { features, preferences, recommendations, handleFormSubmit } = useFilteringManager()
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
@@ -15,7 +16,11 @@ function App() {
       </div>
       <div className="bg-white p-8 rounded-lg shadow-md w-full flex flex-col justify-center md:flex-row gap-8">
         <div>
-          <Form onSubmit={setRecommendations} />
+          <Form
+            onSubmit={handleFormSubmit}
+            preferences={preferences}
+            features={features}
+          />
         </div>
         <div>
           <RecommendationList recommendations={recommendations} />

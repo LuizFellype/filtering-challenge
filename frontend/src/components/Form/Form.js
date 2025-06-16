@@ -1,27 +1,21 @@
 // Form.js
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Preferences, Features, RecommendationType } from './Fields';
 import { SubmitButton } from './SubmitButton';
-import useProducts from '../../hooks/useProducts';
 import useForm from '../../hooks/useForm';
-import useRecommendations from '../../hooks/useRecommendations';
 
-function Form({ onSubmit }) {
-  const { preferences, features, products } = useProducts();
+function Form({ onSubmit, preferences, features }) {
   const { formData, handleChange } = useForm({
     selectedPreferences: [],
     selectedFeatures: [],
     selectedRecommendationType: '',
   });
-
-  const { getRecommendations } = useRecommendations(products);
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    const dataRecommendations = getRecommendations(formData);
     
-    onSubmit(dataRecommendations)
+    onSubmit(formData)
   };
 
   return (
@@ -51,4 +45,4 @@ function Form({ onSubmit }) {
   );
 }
 
-export default Form;
+export default React.memo(Form);
