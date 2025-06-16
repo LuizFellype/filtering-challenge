@@ -22,9 +22,6 @@ function Form({ onSubmit }) {
     const dataRecommendations = getRecommendations(formData);
     
     onSubmit(dataRecommendations)
-    /**
-     * Defina aqui a lógica para atualizar as recomendações e passar para a lista de recomendações
-     */
   };
 
   return (
