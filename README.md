@@ -23,21 +23,15 @@ Melhorar responsividade para mobile.
 - Caso outra pagina existisse outra pagina, poderiamos usar Context para salvar as recomendações para nao perdermos o resultado ja feito. 
 - Poderia considerar as features selecionadas caso não houvesse produtos pelas preferencias.
 
-## Como rodar
+## Como Executar
 
-Instalar todos as dependencias e rodar o projeto:
- 
-    yarn install 
-    cd frontend && yarn install && cd ..
-    cd backend && yarn install && cd ..
+1. Clone o repositório: `git clone git@github.com:LuizFellype/filtering-challenge.git`
+2. Instale as dependências: `cd filtering-challenge && yarn install`
+3. Para instalar o projeto, execute o script `install.sh`: `bash install.sh`
+4. Inicie a aplicação: `yarn start` to run only front. `yarn run dev` to run both (front and back).
 
-    yarn run dev
-
-Caso voce nao tenha o concurrently instalado.
-
-Execute para instalá-lo:
-
-    yarn global add concurrently
+Caso voce nao tenha o concurrently instalado para rodar o `dev`.
+Para instalá-lo Execute: `yarn global add concurrently`
 
 
 ## Tecnologias Utilizadas
@@ -94,13 +88,6 @@ Para completar este teste, você deve concentrar-se principalmente em três arqu
 - Consumir a API fornecida pelo json-server para obter os dados dos produtos.
 - Seguir as boas práticas de desenvolvimento e organização de código.
 - Implementar testes unitários para as funcionalidades desenvolvidas.
-
-## Como Executar
-
-1. Clone o repositório: `git clone <URL_DO_REPOSITORIO>`
-2. Instale as dependências: `yarn install`
-3. Para instalar o projeto, execute o script `./install.sh` 
-4. Inicie a aplicação: `yarn start`
 
 ### Scripts Disponíveis
 
