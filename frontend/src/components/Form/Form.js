@@ -4,12 +4,13 @@ import React from 'react';
 import { Preferences, Features, RecommendationType } from './Fields';
 import { SubmitButton } from './SubmitButton';
 import useForm from '../../hooks/useForm';
+import { recommendationTypes } from '../../services/recommendation.service';
 
 function Form({ onSubmit, preferences, features }) {
   const { formData, handleChange } = useForm({
     selectedPreferences: [],
     selectedFeatures: [],
-    selectedRecommendationType: '',
+    selectedRecommendationType: recommendationTypes.MultipleProducts,
   });
 
   const handleSubmit = (e) => {
@@ -37,6 +38,7 @@ function Form({ onSubmit, preferences, features }) {
       <div className='flex flex-col md:flex-row md:justify-between items-center md:gap-4'>
         <RecommendationType
           onRecommendationTypeChange={handleChange('selectedRecommendationType')}
+          selected={formData.selectedRecommendationType}
         />
         <SubmitButton text="Obter recomendação" />
       </div>
