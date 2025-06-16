@@ -5,6 +5,11 @@ const toHashMap = (arr) => {
   }, {})
 }
 
+export const recommendationTypes = {
+  MultipleProducts: 'MultipleProducts',
+  SingleProduct: 'SingleProduct',
+}
+
 /**
  * 
  * @param {
@@ -54,7 +59,7 @@ const getRecommendations = (
   }, { byPreferences: [], byFeatures: [] })
 
 
-  if (selectedRecommendationType === 'SingleProduct') {
+  if (selectedRecommendationType === recommendationTypes.SingleProduct) {
     const hasMultipleMatches = byPreferences.length > 1
 
     return hasMultipleMatches ?

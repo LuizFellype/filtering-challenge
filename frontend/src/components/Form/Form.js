@@ -26,23 +26,17 @@ function Form({ onSubmit, preferences, features }) {
       <div className='md:flex md:justify-between md:gap-4'>
         <Preferences
           preferences={preferences}
-          onPreferenceChange={(selected) =>
-            handleChange('selectedPreferences', selected)
-          }
+          onPreferenceChange={handleChange('selectedPreferences')}
         />
         <Features
           features={features}
-          onFeatureChange={(selected) =>
-            handleChange('selectedFeatures', selected)
-          }
+          onFeatureChange={handleChange('selectedFeatures')}
         />
       </div>
 
       <div className='flex flex-col md:flex-row md:justify-between items-center md:gap-4'>
         <RecommendationType
-          onRecommendationTypeChange={(selected) =>
-            handleChange('selectedRecommendationType', selected)
-          }
+          onRecommendationTypeChange={handleChange('selectedRecommendationType')}
         />
         <SubmitButton text="Obter recomendação" />
       </div>
