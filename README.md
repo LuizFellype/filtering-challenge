@@ -1,121 +1,169 @@
-# Teste Técnico - Recomendador de Produtos RD Station
+# Tech challenge
 
-Este projeto é parte do teste técnico para a vaga de desenvolvedor front-end na RD Station. O objetivo principal é implementar a lógica de recomendação de produtos RD Station em uma aplicação web existente.
+Welcome to Buoy's tech challenge!
 
-## Missão
+This repository contains a partially implemented toy business analytics dashboard, designed as a work-in-progress prototype for a real-world application.
 
-Sua missão é desenvolver a funcionalidade central de recomendação de produtos dentro de uma aplicação React.js pré-existente. Você deverá implementar a lógica que permite aos usuários selecionar suas preferências e funcionalidades desejadas, e então receber recomendações de produtos correspondentes.
+You must use the provided code sample and its dependencies to solve the problems explained below.
 
-## Contexto
+The solution must be a cloud git repository, hosted on any cloud git tool of your choice.
 
-Este projeto é parte de uma etapa técnica do processo seletivo para a vaga de desenvolvedor front-end na RD Station. A estrutura básica da aplicação já está construída com React.js para o front-end e utiliza json-server para simular um servidor RESTful com dados de produtos.
+- Its first commit must:
+  - Have the message "First commit"
+  - Have the exact code sample as it was provided, no changes whatsoever
+- From this point on, work on the problems exposed below as you like
 
-Seu foco deve ser na implementação da lógica de recomendação e na integração desta funcionalidade com a interface do usuário existente. A aplicação já possui um layout básico utilizando Tailwind CSS.
-
-## Solução e Melhorias
-
-- Filtrar podutos pelas preferencias selecionadas.
-Melhorar responsividade para mobile.
-- Separar responsabilidade do form e da logica de filtrar reduzindo estado duplicado e complexidade de components. Memoizando funções e componentes para evitar renderização desnecessaria.
-- Inicia com multiplas tipo de recomendações como default para melhorar UX, necessitando de menos ações para obeter resultados.
+NOTE: In case you want to create a private git repository, please grant the user matthew@buoydevelopment.com full access to the repo. If you do so, please make it clear once you reply with your answer.
 
 
-### Sugestão
+# Problem
 
-- Caso outra pagina existisse outra pagina, poderiamos usar Context para salvar as recomendações para nao perdermos o resultado ja feito. 
-- Poderia considerar as features selecionadas caso não houvesse produtos pelas preferencias.
-- Adicionar um loading/placeholder enquanto os dados da api estao sendo carregadas para evitar um pulo do container causado pela diferença de height ao ser populado e indicar ao usuario que os dados estao sendo carregadas. OU ate mesmo atualizar a versao do react para 19 e usar a feature de Server Components :)
+### Issue to solve
 
+We need a new page holding information about all the users on our platform.
 
-## Como Executar
+### Context
 
-1. Clone o repositório: `git clone git@github.com:LuizFellype/filtering-challenge.git`
-2. Instale as dependências: `cd filtering-challenge && yarn install`
-3. Para instalar o projeto, execute o script `install.sh`: `bash install.sh`
-4. Inicie a aplicação: `yarn start` to run only front. `yarn run dev` to run both (front and back).
+Using the different assets present in the code sample:
 
-Caso voce nao tenha o concurrently instalado para rodar o `dev`.
-Para instalá-lo Execute: `yarn global add concurrently`
+Create a whole new page, called Users
 
+- It has to be visitable from the sidebar, with title Users
+- It should be rendered under the /users path
+- It should get the users info from https://dummyjson.com/users
+- It should display an Ant Design table that:
+  - Has the columns:
+    - ID
+    - First name
+    - Last name
+    - Name (full name in one column)
+    - Email
+    - Image (render decision lies on you, show the best option for images you can think of, and justify it in a comment in the code)
+    - Client side pagination, 13 elements per page
+  - Rows can be ordered by email
+  - Rows can be filtered by First name, and Last name.
+  - Loading behaviour while the data is being fetched
 
-## Tecnologias Utilizadas
+Reference:
 
-Este projeto utiliza as seguintes tecnologias principais:
+- https://tanstack.com/query/v3/
+- https://ant.design/components/overview/
+- https://dummyjson.com
 
-- React.js: Para o desenvolvimento do front-end
-- json-server: Para simular um servidor RESTful com dados de produtos
-- Tailwind CSS: Para estilização e layout responsivo
+### Acceptance criteria
 
-## Requisitos Técnicos
+- If you start the project (see #Starting Steps below) and fill the login form (any credentials will work), you will end up in the dashboard page.
+- There's a Users section in the Sidebar
+- Visiting the Users sections loads a table with 13 elements, and several pages in the pagination section
+- Changing to page 2 displays 13 different rows
+- Clicking on the Email column changes the order of the rows, ordering ASC or DESC depending on the arrow displayed
+- Writing "Miles" on the First name filter results in ONE row, with ID=4
+- Deleting the text in the First name filter returns the table to its original state
+- Writing "Cummerata" on the Last name filter results in ONE row, with ID=4
+- Deleting the text in the Last name filter returns the table to its original state
 
-### Familiaridade com Tailwind CSS
+---
 
-O layout da aplicação foi desenvolvido utilizando Tailwind CSS. Familiaridade básica com este framework de CSS utilitário será útil para entender e potencialmente modificar o layout existente.
+> EXTRA POINTS: WRITE HERE ANY EXTRA COMMENTS OR NOTES YOU FIND RELEVANT
 
-### Versão do Node.js
+---
 
-Este projeto requer Node.js versão 18.3 ou superior. Se você não tem essa versão instalada, siga as instruções abaixo para instalá-la usando `n` ou `nvm`.
+## TECH CONTEXT
 
-#### Usando `n` (Node Version Manager):
+# Starting Steps
 
-1. Instale `n` globalmente (caso ainda não tenha): npm install -g n
+- npm i
+- create a .env with the following key-value pairs
+  - REACT_APP_API_URL=https://fake-api-owmo.onrender.com/dev
+  - REACT_APP_FAKE_API_MODE=false
+- npm start
 
-2. Instale e use a versão 18.3 do Node.js: n 18.3
+# Data Loading (FAKE API MODE)
 
-#### Usando `nvm` (Node Version Manager):
+REACT_APP_FAKE_API_MODE ENV VAR switches whole application between FAKE and API modes
 
-1. Instale `nvm` (caso ainda não tenha) seguindo as instruções em: https://github.com/nvm-sh/nvm
+FAKE MODE
 
-2. Instale e use a versão 18.3 do Node.js: nvm install 18.3 & nvm use 18.3
+- FakeService class helps reproducing errors and long load times
+- JSON Mocking (locally or any easy mocking service works)
 
-Após instalar a versão correta do Node.js, você pode prosseguir com a instalação das dependências do projeto e iniciar o desenvolvimento.
+API MODE
 
-## Foco do Desenvolvimento
+- ApiService class helps connecting to external APIs ('fetch' wrapper)
 
-Para completar este teste, você deve concentrar-se principalmente em três arquivos específicos:
+PROS of developing UIs this way
 
-1. `App.js`: Neste componente, você encontrará o comentário "Dadas atualizações no formulário, necessário atualizar a lista de recomendações". Implemente a lógica necessária para atualizar a lista de recomendações com base nas entradas do usuário.
+When a feature is requested, given that the tech team builds a JSON CONTRACT (accurate definition of how needed API endpoints will behave, both requests and responses)
 
-2. `Form.js`: Este componente contém o comentário "Defina aqui a lógica para atualizar as recomendações e passar para a lista de recomendações". Desenvolva a lógica para processar as entradas do usuário e gerar as recomendações apropriadas.
+- Backend and Frontend can start working on their implementations _in parallel_. No dependencies from the very beginning.
+- Frontend can work on the [5 UI states](https://medium.com/@pakhimangal/ui-states-are-important-74c2715cef0b) thanks to our FakeService class. Actually, it may be even easier for some of the states (Loading, for instance, can be forced to be quite long)
+- Whenever backend development is ready, the integration phase is just toggling a boolean! (if the JSON Contract was respected during the development, that is)
+- EXTRA VALUE: FAKE mode can be used as a Demo/Playground environment out of the box!
 
-3. `recommendation.service.js`: Neste arquivo de serviço, você verá o comentário "Crie aqui a lógica para retornar os produtos recomendados." Implemente a lógica de negócios para determinar quais produtos devem ser recomendados com base nos critérios fornecidos.
+# Core libraries
 
-## Observações Adicionais
+Typescript
 
-- Sinta-se à vontade para implementar melhorias na cobertura de testes e no layout da aplicação, caso tenha tempo adicional.
-- O código existente serve como base para sua implementação. Concentre-se em desenvolver a funcionalidade de recomendação de produtos conforme especificado nos requisitos do projeto e nos arquivos mencionados acima.
+React
 
-## Requisitos
+Ant Design
 
-- Implementar a lógica de recomendação de produtos com base nas preferências do usuário.
-- Utilizar React.js para o desenvolvimento do front-end.
-- Consumir a API fornecida pelo json-server para obter os dados dos produtos.
-- Seguir as boas práticas de desenvolvimento e organização de código.
-- Implementar testes unitários para as funcionalidades desenvolvidas.
+- Ant Design dynamic theme builder: https://ant.design/theme-editor
+- Export the result of the builder above, merge with current content of "antdTheme.json"
 
-### Scripts Disponíveis
+React Query
 
-- `start`: Inicia a aplicação React em modo de desenvolvimento.
-- `start:frontend`: Inicia apenas a parte frontend da aplicação em modo de desenvolvimento.
-- `start:backend`: Inicia apenas a parte backend da aplicação em modo de desenvolvimento.
-- `dev`: Inicia simultaneamente a parte frontend e backend da aplicação em modo de desenvolvimento.
+- https://tanstack.com/query/latest/docs/react/overview
+- Brand depending hooks: useBrandIdSubscribedQuery
+- Complete CRUD hooks builder: useCRUDBuilder
 
-## Critérios de Aceite
+React Intl
 
-1. O serviço de recomendação de produtos deve ser capaz de receber as preferências e funcionalidades desejadas do usuário através de um formulário.
-2. O serviço deve retornar recomendações de produtos com base nas preferências e funcionalidades selecionadas pelo usuário.
-3. Se o tipo de recomendação selecionado for "SingleProduct", o serviço deve retornar apenas um produto que corresponda melhor às preferências e funcionalidades do usuário.
-4. Se o tipo de recomendação selecionado for "MultipleProducts", o serviço deve retornar uma lista de produtos que correspondam às preferências e funcionalidades do usuário.
-5. Em caso de empate na seleção de produtos com base nas preferências e funcionalidades do usuário, o serviço deve retornar o último produto que atende aos critérios de seleção.
-6. O serviço deve ser capaz de lidar com diferentes tipos de preferências e funcionalidades selecionadas pelo usuário.
-7. O serviço deve ser modular e facilmente extensível para futuras atualizações e adições de funcionalidades.
+- https://formatjs.io/docs/react-intl/
 
-Certifique-se de que todos os critérios de aceite são atendidos durante o desenvolvimento do projeto.
+# Getting Started with Create React App
 
-## Autor
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Desenvolvido por [Seu Nome]
+## Available Scripts
 
-## Licença
+In the project directory, you can run:
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
